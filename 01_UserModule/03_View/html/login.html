@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0 ,maximum-scale=1.0,user-scale=no">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title></title>
+
+    <!-- Bootstrap -->
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/login.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="container">
+        
+        <!-- 登入小框体-->
+        <div class="row">
+          <div id="loginbox">
+              <div class="center-block text-center">
+                <h4>Welcome to come!</h4>
+              </div>
+              <form  method="post">
+                <div id="user-box" class="form-group center-block">                    
+                    <div  class="input-group">
+                      <span class="input-group-addon glyphicon glyphicon-user" id="basic-addon1"></span>
+                      <input class="form-control" type="text" name="username" id="username" placeholder="用户名/邮箱地址/手机号"  aria-describedby="basic-addon1"/>
+                    </div>                   
+                </div>
+                <div id="pass-box" class="form-group center-block">
+                    <div class="input-group">
+                      <span class="input-group-addon glyphicon glyphicon-lock" id="basic-addon1"></span>
+                      <input class="form-control" type="password" name="password" id="password" placeholder="密码">
+                    </div>
+                </div>
+                <div id="check-box" class="form-group center-block">
+                  <div class="col-xs-offset-1">
+                    <div class="checkbox">
+                      <label>
+                        <input type="checkbox" name="checkbox">记住信息
+                      </label>
+                    </div>
+                    <div class="checkbox col-xs-offset-2">
+                      <label>
+                        <input type="checkbox" name="checkbox">自动登录
+                      </label>
+                    </div>
+                  </div>
+                </div>
+              <div id="btn-box" class="form-group center-block">
+                  <button id="btn-login" class="btn btn-primary" type="button">
+                  &nbsp;&nbsp;&nbsp;&nbsp;登&nbsp;&nbsp;录&nbsp;&nbsp;&nbsp;&nbsp;
+                  </button>
+                  <div id="btn-register-box" class="btn-group">              
+                    <button id="btn-register" class="btn btn-warning " type="button">
+                    &nbsp;&nbsp;&nbsp;&nbsp;注&nbsp;&nbsp;册&nbsp;&nbsp;
+                    </button>
+                    <button class="btn btn-warning dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
+                    <span class="caret"></span>
+                    </button>
+                    <!--下拉菜单-->
+                    <ul class="dropdown-menu">
+                      <li><a href="#">忘记密码</a></li>
+                    </ul>
+                  </div>
+              </div>
+              <div class="divider"></div>
+              <div id="otherlogin-box" class="center-block">
+                  <p class="text-primary text-center"><b>第三方登录</b></p>
+                <div class="img-box">
+                <a href="#">
+                  <img src="../img/qq.png" class="img-circle" width="100%">
+                </a>
+                </div>
+                <div class="img-box">
+                <a href="#">
+                  <img src="../img/weibo.png" class="img-circle" width="100%">
+                </a>
+                </div>
+                <div class="img-box">
+                <a href="#" class="focus">
+                  <img src="../img/micromsg.png" class="img-circle" width="100%">
+                </a>
+                </div>
+              </div>
+            </form>
+          </div>
+      
+        </div>
+
+      </div>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="../js/bootstrap.min.js"></script>
+  </body>
+</html>

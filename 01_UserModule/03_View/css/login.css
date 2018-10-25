@@ -1,0 +1,87 @@
+/*
+name:Stone;
+version:0.1;
+date:10.25.2018;
+*/
+
+/*框体设置*/
+body{
+	background-color: #272822;
+}
+#loginbox
+{
+	background-color: rgb(255,255,255);
+	/*大小*/
+	width: 24em;
+	height: 29em;
+	
+	padding-top: 3em;
+	padding-bottom: 2em;
+	padding-left: 3em;
+	padding-right: 3em;
+	/*边框*/ 
+	border-style: solid;
+	border-color:rgb(204,204,204);
+	vertical-align: center;
+	align-content: center;
+	border-radius: 1em;
+	box-shadow: 1px,1px,1px,rgb(255,255,255);
+}
+#user-box,#pass-box,#check-box,#btn-box,#otherlogin-box{
+	width:17em;
+}
+#check-box{
+	border-color: rgb(204,204,204);
+	border-width: 2px;
+	border-style: dashed;
+	border-radius: 8px;
+}
+#username{
+	width: 14em;
+} 
+#password{
+	width: 14em;
+}
+
+#btn-login {
+	display: inline-block;
+}
+#btn-register-box{
+	display: inline-block;
+	float: right;
+}
+
+.checkbox{
+	display: inline-block;
+}
+
+.divider{
+	height: 1px;
+	margin: 12px 0;
+	overflow: hidden;
+	background-color: #e5e5e5;
+}
+#otherlogin-box{
+	align-content: center;
+}
+.img-box{
+	margin: 4px 8px;
+	display: inline-block;
+	width: 4em;
+
+	border-color: rgba(204,204,204,0.9);
+	border-width: 1px;
+	border-radius: 2em;
+	border-style: solid;
+}
+.img-box-focus{
+	margin: 4px 8px;
+	display: inline-block;
+	width: 4em;
+	/*焦点事件*/
+	
+	box-shadow: 1px 1px 1px #888888;
+}
+.glyphicon{
+	top:0;
+}
