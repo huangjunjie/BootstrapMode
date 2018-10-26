@@ -25,11 +25,15 @@
         <div class="row">
           <div id="loginbox">
               <div class="center-block text-center">
-                <h4>Welcome to come!</h4>
+                <h4 class="text-success">Welcome to come</h4>
+              </div>
+              <div id="myAlert-box">
+              <!--<div id="myAlert" class="alert alert-warning alert-dismissible fade in" role="alert" style="display: none;">
+              </div>-->
               </div>
               <form  method="post">
                 <div id="user-box" class="form-group center-block">                    
-                    <div  class="input-group">
+                    <div class="input-group">
                       <span class="input-group-addon glyphicon glyphicon-user" id="basic-addon1"></span>
                       <input class="form-control" type="text" name="username" id="username" placeholder="用户名/邮箱地址/手机号"  aria-describedby="basic-addon1"/>
                     </div>                   
@@ -67,7 +71,7 @@
                     </button>
                     <!--下拉菜单-->
                     <ul class="dropdown-menu">
-                      <li><a href="#">忘记密码</a></li>
+                      <li><a id="password-fg" href="#">忘记密码</a></li>
                     </ul>
                   </div>
               </div>
@@ -100,5 +104,7 @@
     <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/login.js"></script>
+    <script type="text/javascript" src="../js/jquery.cookie.js"></script>
   </body>
 </html>

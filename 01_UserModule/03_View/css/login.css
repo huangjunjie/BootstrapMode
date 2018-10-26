@@ -27,7 +27,7 @@ body{
 	border-radius: 1em;
 	box-shadow: 1px,1px,1px,rgb(255,255,255);
 }
-#user-box,#pass-box,#check-box,#btn-box,#otherlogin-box{
+#user-box,#pass-box,#check-box,#btn-box,#otherlogin-box,#myAlert{
 	width:17em;
 }
 #check-box{
@@ -73,6 +73,10 @@ body{
 	border-width: 1px;
 	border-radius: 2em;
 	border-style: solid;
+}
+#dropdown-menu-username
+{
+	left:auto;right:4px;width:14em;
 }
 .img-box-focus{
 	margin: 4px 8px;
