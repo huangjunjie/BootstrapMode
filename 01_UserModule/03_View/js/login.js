@@ -72,45 +72,161 @@ $('#myAlert').on('closed.bs.alert', function () {
 版本：0.1
 接口：
 关联函数：修改swith中的东西就好了
+
 */
 $('#username').on("input propertychange",function(event){
 	event.preventDefault();
 	var str=$('#username').val();
 	var tooltip="<ul class='dropdown-menu' id='dropdown-menu-username' aria-labelledby='dLabel'>";
 	//初次点击
+	if($("#dropdown-menu-username")!=null)
+	{
+			droptooltip();
+	}
 	if(str.length>2&&str.substring(str.length-1,str.length)=='@')
 	{
+
 		switch(1)
 		{
-			case 1:tooltip=tooltip+"<li><a href='#'>"+str+"qq.com</a></li>";
-			case 2:tooltip=tooltip+"<li><a href='#'>"+str+"163.com</a></li>";
-			case 3:tooltip=tooltip+"<li><a href='#'>"+str+"outlook.com</a></li>";
-			case 4:tooltip=tooltip+"<li><a href='#'>"+str+"gmail.com</a></li>";
-			case 5:tooltip=tooltip+"<li><a href='#'>"+str+"334.com</a></li>";
-			case 6:tooltip=tooltip+"<li><a href='#'>"+str+"666.com</a></li>";
+			case 1:tooltip=tooltip+"<li><a href='#'><small>"+str+"qq.com</small></a></li>";
+			case 2:tooltip=tooltip+"<li><a href='#'><small>"+str+"163.com</small></a></li>";
+			case 3:tooltip=tooltip+"<li><a href='#'><small>"+str+"outlook.com</small></a></li>";
+			case 4:tooltip=tooltip+"<li><a href='#'><small>"+str+"gmail.com</small></a></li>";
+			case 5:tooltip=tooltip+"<li><a href='#'><small>"+str+"334.com</small></a></li>";
+			case 6:tooltip=tooltip+"<li><a href='#'><small>"+str+"666.com</small></a></li>";
 		}
+		//显示tooltip
 		$('form').first().attr({"autocomplete":"off"});
 		$('.input-group').first().addClass("dropdown");
-		$('#username').attr({"data-toggle":"dropdown"});	
+		$('#username').attr({"data-toggle":"dropdown"});
 		$('#username').after(tooltip);
 		$('.input-group').first().addClass("open");
 
+		
+		
+		//添加键盘事件
+		$('.dropdown ul li a').each(function(index){
+			$(this).on("keydown",index,function(event){
+				event.preventDefault();
+				if(index==0&&event.keyCode==38)
+				{
+					
+				}
+				if(index>0&&event.keyCode==38)
+				{
+					//event.preventDefault();
+				}
+				if(index<6&&event.keyCode==40)
+				{
+					//event.preventDefault();
+				}
+				
+				if(event.keyCode==13&&index>=0&&index<6)
+				{
+					$("#username").val($(this).children("small").html());
+					droptooltip();
+				}
+			})
+		})
+
+		
 		//选择充填
 		$(".dropdown ul li a").each(function(){
 			$(this).on("click",function(event){
 			event.preventDefault();
-			$("#username").val($(this).html());
-			$(".dropdown ul").remove();
-			$(".dropdown").removeClass("dropdown");
-			$('.input-group').first().removeClass("open");
-			$('#username').removeAttr("data-toggle");
-			$('form').first().removeAttr("autocomplete");
+			$("#username").val($(this).children("small").html());
+			droptooltip();
 			})
 		})
+		//焦点控制
+		$('.dropdown ul li a').first().focus();
 		return;
 	}
 })
 
+//清除提示
+var droptooltip=function(){
+	$(".dropdown ul").remove();
+	$(".dropdown").removeClass("dropdown");
+	$('.input-group').first().removeClass("open");
+	$('#username').removeAttr("data-toggle");
+	$('form').first().removeAttr("autocomplete");
+}
+
+//添加提示
+var addtooltip=function(){
+	event.preventDefault();
+	var str=$('#username').val();
+	if($("#dropdown-menu-username")!=null)
+	{
+			droptooltip();
+	}
+	var tooltip="<ul class='dropdown-menu' id='dropdown-menu-username' aria-labelledby='dLabel'>";
+	//初次点击
+	if(str.length>2&&str.substring(str.length-1,str.length)=='@')
+	{
+		switch(1)
+		{
+			case 1:tooltip=tooltip+"<li><a href='#'><small>"+str+"qq.com</small></a></li>";
+			case 2:tooltip=tooltip+"<li><a href='#'><small>"+str+"163.com</small></a></li>";
+			case 3:tooltip=tooltip+"<li><a href='#'><small>"+str+"outlook.com</small></a></li>";
+			case 4:tooltip=tooltip+"<li><a href='#'><small>"+str+"gmail.com</small></a></li>";
+			case 5:tooltip=tooltip+"<li><a href='#'><small>"+str+"334.com</small></a></li>";
+			case 6:tooltip=tooltip+"<li><a href='#'><small>"+str+"666.com</small></a></li>";
+		}
+		//显示tooltip
+		$('form').first().attr({"autocomplete":"off"});
+		$('.input-group').first().addClass("dropdown");
+		$('#username').attr({"data-toggle":"dropdown"});
+		$('#username').after(tooltip);
+		$('.input-group').first().addClass("open");
+
+		
+		
+		//添加键盘事件
+		$('.dropdown ul li a').each(function(index){
+			$(this).on("keydown",index,function(event){
+				event.preventDefault();
+				if(index==0&&event.keyCode==38)
+				{
+					
+				}
+				if(index>0&&event.keyCode==38)
+				{
+					//event.preventDefault();
+				}
+				if(index<6&&event.keyCode==40)
+				{
+					//event.preventDefault();
+				}
+				
+				if(event.keyCode==13&&index>=0&&index<6)
+				{
+					$("#username").val($(this).children("small").html());
+					droptooltip();
+				}
+			})
+		})
+
+		
+		//选择充填
+		$(".dropdown ul li a").each(function(){
+			$(this).on("click",function(event){
+			event.preventDefault();
+			$("#username").val($(this).children("small").html());
+			droptooltip();
+			})
+		})
+
+		return;
+	}
+}
+
+//取回焦点
+$('#username').focusin(function(event){
+	event.preventDefault();
+	addtooltip();
+})
 /*
 模块名：记住账号
 功能：保存cookie到本地该网站信息
@@ -157,3 +273,13 @@ $("#btn-register").click(function(){
 $("#password-fg").click(function(){
 	window.location.href="?username="+$("#username").val();
 })
+
+/*
+模块名：第3方登录
+功能：通过第3方登录获取用户信息
+动作：验证OR跳转
+作者：hjj
+时间：2018.10.26 
+版本：0.1
+接口：url
+*/

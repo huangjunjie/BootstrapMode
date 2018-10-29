@@ -1,0 +1,179 @@
+
+body{
+	background-image:url(../img/register-bg.jpg);
+	background-size: cover;
+	background-color:#D899C8;
+	overflow: auto;
+	height: 100vh;
+}
+
+.EntrySign-body{
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+}
+/*内容*/
+#content{
+	width: 34em;
+	height: 100vh;
+	vertical-align: middle;
+	align-content: center;
+}
+
+/*主内容*/
+#valid-content{
+	/*边距*/
+	margin-top:5em;
+	/*高度*/
+	/*阴影*/
+	border-radius: 1em;
+	border-width: 1px;
+	border-style: solid;
+	border-color:rgb(204,204,204);
+	-webkit-box-shadow: 0 3px 3px rgba(82,52,168,0.4);
+			box-shadow: 0 3px 3px rgba(82,52,168,0.4);
+	background-color: rgba(255,255,255,0.94);
+	overflow: hidden;
+}
+
+/*logo*/
+#logo-box{
+	margin-top:2em;
+	margin-left: auto;
+	margin-right: auto;
+	width: 34em;
+	align-content: center;
+}
+
+#logo-demo{
+	margin-top:0.3em;
+	color: #D75DBF;
+	font-size: 22px;
+    font-weight:700;
+    line-height:2em;
+    text-align: center;
+    white-space: nowrap;
+}
+
+/*验证区域*/
+#exec-box{
+	width :34em;
+}
+#username-box{
+
+	height:3em;
+	width: 26em;
+ 
+ 	margin-top: 2em;
+	margin-left:auto;
+	margin-right:auto;
+
+	border-bottom: solid 1px #EBEBEB;
+}
+#username-left{
+	display: inline-block;
+	width : 7em;
+	border-right:solid 1px #EBEBEB;
+	/*vertical-align:middle;*/
+	/*文本*/
+	color: #8590A6;
+	font-size: 14px;
+    font-weight:500;
+    line-height:2em;
+    text-align: center;
+}
+
+#username-right{
+	display: inline-block;
+}
+
+#username-right div input {
+	width: 16em;
+	margin-left: 1em;
+	border-width: 0px;
+	outline: none;
+	background-color: rgba(253,247,251,0.1);
+}
+
+
+#password-box{
+
+	height:2.5em;
+	width: 26em;
+
+ 	margin-top:2em;
+	margin-left:auto;
+	margin-right:auto;
+
+	border-bottom: solid 1px #EBEBEB;
+}
+
+#password-box input{
+	width: 24em;
+	margin-left: 1em;
+	border-width: 0px;
+	outline: none;
+	background-color: rgba(253,247,251,0.1);
+}
+#pwmsg-box{
+	
+	width: 26em;
+	height: 2em;
+	margin-top: 2em;
+}
+#policy-box{
+	width: 26em;
+	height: 3em;
+	margin-bottom: 3em;
+	padding-top:2em;
+}
+/*登入区域*/
+#login-box{
+	margin-left: -1px;
+	padding-top:0.7em;
+	width: calc(34em+2px);
+	width:-moz-calc(34em + 2px);
+	width:-webkit-calc(34em + 2px);
+	height:3em;
+	background-color: rgba(39,40,34,0.34);
+	border-bottom-right-radius: 1em;
+	border-bottom-left-radius: 1em;
+}
+/*注册按钮*/
+#btn-content div{
+	width: 34em;
+}
+#btn-content a div{
+	/*边距*/
+	margin-top:2em;
+	/*框体*/
+	height:3em;
+	background-color:rgb(204,0,255);
+	padding: 6px 12px;
+    margin-bottom: 0;
+    text-decoration: none;
+    color: #fff;
+    font-weight:600;
+    line-height:2em;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    touch-action: manipulation;
+	/*阴影*/
+	border-radius: 3px;
+	-webkit-box-shadow: 0 1px 1px rgba(82,52,168,0.3);
+			box-shadow: 0 3px 3px rgba(82,52,168,0.3);
+}
+
+#btn-content a div:hover{
+	background-color: rgb(214,20,255);
+	text-decoration: none;
+}
+#btn-content a
+{
+	text-decoration: none;
+}
+#btn-content a:hover
+{
+	text-decoration: none;
+}
