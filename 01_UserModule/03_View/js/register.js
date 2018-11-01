@@ -31,19 +31,19 @@ $("#username-left").on('click',function(event){
 			$(this).on("click",function(){
 				switch(i){
 					case 0:str="&nbsp;用&nbsp;户&nbsp;名";
-					       u_str_placehold="请输入用户名";
+					       u_str_placehold="用户名含5-12位中文 数字 小字字母";
 					       p_str_placehold="请输入密码";
 					       msgVerifyhide();
 					       pwmsgboxShow();
 						   break;
 					case 1:str="&nbsp;&nbsp;邮&nbsp;箱&nbsp;&nbsp;";
-					       u_str_placehold="请输入邮箱名";
+					       u_str_placehold="邮箱名";
 					       p_str_placehold="请输入密码";
 					       msgVerifyhide();
 					       pwmsgboxShow();
 					       break;
 					case 2:str="&nbsp;&nbsp;手&nbsp;机&nbsp;&nbsp;";
-						   u_str_placehold="请输入手机号";
+						   u_str_placehold="手机号";
 						   p_str_placehold="验证码";
 						   msgVerifyShow();
 						   pwmsgboxHide();
@@ -159,17 +159,17 @@ $("#username-left").on('click',function(event){
 		{
 			//1.用户名uid
 			case "&nbsp;用&nbsp;户&nbsp;名":
-							var uid_pattern=/^[a-z0-9!@#-_]{5,12}$/;
+							var uid_pattern=/^[a-z0-9\x20-\x2f]{5,12}$/;
 							if(!uid_pattern.test(valid_msg_pass)){
-								$(".modal-body").html("<p class='text-danger'><strong>错误！</strong>密码存在5-12位中英文数字</p>");
+								$(".modal-body").html("<p class='text-danger'><strong>错误！</strong>密码由5-12位中英文数字和特殊字符（!@#-_）组成</p>");
 								$("#pass-modal").modal('show');
 							}
 							else
 							{
 								//window.alert(valid_msg_pass);
-								var one_pattern=/^[a-z]+$/;
-								var tow_pattern=/^[0-9]+$/;
-								var the_pattern=/^[!@#-_]+$/;
+								var one_pattern=/^.*[a-z]{1,}.*$/;
+								var tow_pattern=/^.*[0-9]{1,}.*$/;
+								var the_pattern=/^.*[\x20-\x2f]{1,}.*$/;
 								var tip=0;
 								if(one_pattern.test(valid_msg_pass)){
 									tip=tip+1;
@@ -191,16 +191,16 @@ $("#username-left").on('click',function(event){
 							break;
 			//2.邮件
 			case "&nbsp;&nbsp;邮&nbsp;箱&nbsp;&nbsp;":
-							var mail_pattern=/^[a-z0-9!@#-_]{5,12}$/;
+							var mail_pattern=/^[a-z0-9\x20-\x2f]{5,12}$/;
 							if(!mail_pattern.test(valid_msg_pass)){
-								$(".modal-body").html("<p class='text-danger'><strong>错误！</strong>密码存在5-12位中英文数字</p>");
+								$(".modal-body").html("<p class='text-danger'><strong>错误！</strong>密码由5-12位中英文数字和特殊字符（!@#-_）组成</p>");
 								$("#pass-modal").modal('show');
 							}
 							else
 							{
-								var one_pattern=/^[a-z]{1,12}$/;
-								var tow_pattern=/^[0-9]{1,12}$/;
-								var the_pattern=/^[!@#-_]{1,12}$/;
+								var one_pattern=/^.*[a-z]{1,}.*$/;
+								var tow_pattern=/^.*[0-9]{1,}.*$/;
+								var the_pattern=/^.*[\x20-\x2f]{1,}.*$/;
 								var tip=0;
 								if(one_pattern.test(valid_msg_pass)){
 									tip++;
@@ -265,7 +265,7 @@ $("#username-left").on('click',function(event){
 	function animateProgress(start,end){
 		if($("#pwmsg-box .progress .progress-bar-danger").css("width")!="15%")
 		{
-			$("#pwmsg-box .progress .progress-bar-danger").animate({width:"15%"},500);
+			$("#pwmsg-box .progress .progress-bar-danger").animate({width:"15%"},300);
 		}
 		if(end<=33)
 		{
@@ -275,16 +275,16 @@ $("#username-left").on('click',function(event){
 		else if(end>33&&end<=66)
 		{
 			end=end-33+"%";
-			$("#pwmsg-box .progress .progress-bar-danger").animate({width:"33%"},1000,function(){
-				$("#pwmsg-box .progress .progress-bar-warning").animate({width:end},1000);
+			$("#pwmsg-box .progress .progress-bar-danger").animate({width:"33%"},500,function(){
+				$("#pwmsg-box .progress .progress-bar-warning").animate({width:end},500);
 			});
 		}
 		else
 		{
 			end=end-66+"%";
-			$("#pwmsg-box .progress .progress-bar-danger").animate({width:"33%"},1000,function(){
-				$("#pwmsg-box .progress .progress-bar-warning").animate({width:"33%"},1000,function(){
-					$("#pwmsg-box .progress .progress-bar-success").animate({width:end},1000);
+			$("#pwmsg-box .progress .progress-bar-danger").animate({width:"33%"},300,function(){
+				$("#pwmsg-box .progress .progress-bar-warning").animate({width:"33%"},300,function(){
+					$("#pwmsg-box .progress .progress-bar-success").animate({width:end},300);
 				});
 			});
 		}
