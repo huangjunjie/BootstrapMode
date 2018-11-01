@@ -19,6 +19,18 @@
     <![endif]-->
   </head>
   <body class="EntrySign-body">
+    <div id="pass-modal" class="modal fade bs-example-modal-sm" tabindex="200" role="dialog" aria-labelledby="mySmallModalLabel">
+      <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h5 class="modal-title text-danger">Warning</h5>
+          </div>
+          <div class="modal-body">
+          </div>
+        </div>
+      </div>
+    </div>
     <div class="container">
       <div class="row">
         <div id="content" class="center-block" >
@@ -49,8 +61,8 @@
               </div>
               <div id="pwmsg-box" class="center-block ">
                 <div class="progress">
-                  <div class="progress-bar progress-bar-danger active " style="width: 1%;">
-                    <span class="sr-only">30% Complete</span>
+                  <div class="progress-bar progress-bar-danger active " style="width: 15%;">
+                    <span >密码强度</span>
                   </div>
                   <div class="progress-bar progress-bar-warning progress-bar-striped" style="width: 0%">
                     <span class="sr-only">30% Complete (warning)</span>
@@ -82,8 +94,6 @@
         </div>
       </div>
     </div>
-
-
     <!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
     <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->

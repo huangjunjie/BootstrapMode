@@ -34,16 +34,19 @@ $("#username-left").on('click',function(event){
 					       u_str_placehold="请输入用户名";
 					       p_str_placehold="请输入密码";
 					       msgVerifyhide();
+					       pwmsgboxShow();
 						   break;
 					case 1:str="&nbsp;&nbsp;邮&nbsp;箱&nbsp;&nbsp;";
 					       u_str_placehold="请输入邮箱名";
 					       p_str_placehold="请输入密码";
 					       msgVerifyhide();
+					       pwmsgboxShow();
 					       break;
 					case 2:str="&nbsp;&nbsp;手&nbsp;机&nbsp;&nbsp;";
 						   u_str_placehold="请输入手机号";
 						   p_str_placehold="验证码";
 						   msgVerifyShow();
+						   pwmsgboxHide();
 					       break;
 				}
 				$("#username-left div span").first().html(str);
@@ -98,6 +101,15 @@ $("#username-left").on('click',function(event){
 			$("#msgverify-box").hide();
 		}
 	}
+	//强度检测
+	function pwmsgboxShow()
+	{
+		$("#pwmsg-box").css({"display":"block"});
+	}
+	function pwmsgboxHide()
+	{
+		$("#pwmsg-box").fadeOut({"display":"none"},1000);
+	}
 	//执行检验
 	function msgVerifyExec(){
 
@@ -139,6 +151,88 @@ $("#username-left").on('click',function(event){
 		}
 	 };
 
+	 var passwordValid=function(){
+
+	 	var c_msg_user=$("#username-left div span").html().trim();
+	 	var valid_msg_pass=$("#password").val();
+	 	switch(c_msg_user)
+		{
+			//1.用户名uid
+			case "&nbsp;用&nbsp;户&nbsp;名":
+							var uid_pattern=/^[a-z0-9!@#-_]{5,12}$/;
+							if(!uid_pattern.test(valid_msg_pass)){
+								$(".modal-body").html("<p class='text-danger'><strong>错误！</strong>密码存在5-12位中英文数字</p>");
+								$("#pass-modal").modal('show');
+							}
+							else
+							{
+								//window.alert(valid_msg_pass);
+								var one_pattern=/^[a-z]+$/;
+								var tow_pattern=/^[0-9]+$/;
+								var the_pattern=/^[!@#-_]+$/;
+								var tip=0;
+								if(one_pattern.test(valid_msg_pass)){
+									tip=tip+1;
+								}
+								if(tow_pattern.test(valid_msg_pass)){
+									tip=tip+1;
+								}
+								if(the_pattern.test(valid_msg_pass)){
+									tip=tip+1;
+								}
+								window.alert(tip);
+								switch(tip)
+								{
+									case 1:animateProgress(0,33);break;
+									case 2:animateProgress(0,66);break;
+									case 3:animateProgress(0,100);break;
+								}
+							}
+							break;
+			//2.邮件
+			case "&nbsp;&nbsp;邮&nbsp;箱&nbsp;&nbsp;":
+							var mail_pattern=/^[a-z0-9!@#-_]{5,12}$/;
+							if(!mail_pattern.test(valid_msg_pass)){
+								$(".modal-body").html("<p class='text-danger'><strong>错误！</strong>密码存在5-12位中英文数字</p>");
+								$("#pass-modal").modal('show');
+							}
+							else
+							{
+								var one_pattern=/^[a-z]{1,12}$/;
+								var tow_pattern=/^[0-9]{1,12}$/;
+								var the_pattern=/^[!@#-_]{1,12}$/;
+								var tip=0;
+								if(one_pattern.test(valid_msg_pass)){
+									tip++;
+								}
+								if(tow_pattern.test(valid_msg_pass)){
+									tip++;
+								}
+								if(the_pattern.test(valid_msg_pass)){
+									tip++;
+								}
+								window.alert(tip);
+								switch(tip)
+								{
+									case 1:animateProgress(0,33);break;
+									case 2:animateProgress(0,66);break;
+									case 3:animateProgress(0,100);break;
+								}
+							}
+							break;
+			//3.手机
+			case "&nbsp;&nbsp;手&nbsp;机&nbsp;&nbsp;":
+							var phone_pattern=/^[0-9]{4,6}$/;
+							if(!phone_pattern.test(valid_msg_pass)){
+								$(".modal-body").html("<p class='text-danger'><strong>错误！</strong>验证码只存在数字</p>");
+								$("#pass-modal").modal('show');
+							}
+							break;
+		}
+	 }
+
+
+	 $("#password").on("change",passwordValid);
 	 $("#username").on("change",usernameValid);
 
 	//入框右侧提示
@@ -156,7 +250,7 @@ $("#username-left").on('click',function(event){
 		//t_left=u_position.left;
 		switch(str0)
 		{
-			case 1:msg_worrer="范围.5-12位中英文数字";t_left=u_position.left+8*len;break;//12
+			case 1:msg_worrer="5-12位中英文数字";t_left=u_position.left+8*len;break;//12
 			case 2:msg_worrer="不符合邮件格式";t_left=u_position.left+11*len;break;
 			case 3:msg_worrer="不符合手机号格式";t_left=u_position.left+10*len;break;
 		}
@@ -166,7 +260,35 @@ $("#username-left").on('click',function(event){
 	}
 
 
-
+	//动画效果
+	//初33 中66 高34
+	function animateProgress(start,end){
+		if($("#pwmsg-box .progress .progress-bar-danger").css("width")!="15%")
+		{
+			$("#pwmsg-box .progress .progress-bar-danger").animate({width:"15%"},500);
+		}
+		if(end<=33)
+		{
+			end=end+"%";
+			$("#pwmsg-box .progress .progress-bar-danger").animate({width:end},1000);
+		}
+		else if(end>33&&end<=66)
+		{
+			end=end-33+"%";
+			$("#pwmsg-box .progress .progress-bar-danger").animate({width:"33%"},1000,function(){
+				$("#pwmsg-box .progress .progress-bar-warning").animate({width:end},1000);
+			});
+		}
+		else
+		{
+			end=end-66+"%";
+			$("#pwmsg-box .progress .progress-bar-danger").animate({width:"33%"},1000,function(){
+				$("#pwmsg-box .progress .progress-bar-warning").animate({width:"33%"},1000,function(){
+					$("#pwmsg-box .progress .progress-bar-success").animate({width:end},1000);
+				});
+			});
+		}
+	}
 	//提交检验模块
 //end ready
 })
